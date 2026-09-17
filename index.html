@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Three Years ❤️ | Relationship Quiz</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #fff;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255, 50, 120, .20), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(120, 60, 255, .18), transparent 30%),
+    #07070c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+}
+
+.card {
+  width: 100%;
+  background: rgba(17, 17, 26, .96);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 28px;
+  padding: 26px 21px;
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.60),
+    0 0 50px rgba(255,50,120,.05);
+}
+
+.logo {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #ff619d;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0 0 15px;
+  text-align: center;
+  font-size: clamp(29px, 8vw, 45px);
+  line-height: .98;
+  letter-spacing: -1.5px;
+  font-weight: 950;
+}
+
+.subtitle {
+  text-align: center;
+  color: #aaaab8;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 0 27px;
+}
+
+label {
+  display: block;
+  margin: 0 0 8px;
+  color: #c0c0cb;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #30303c;
+  background: #101018;
+  color: #fff;
+  border-radius: 15px;
+  padding: 16px;
+  font-size: 16px;
+  outline: none;
+  font-family: inherit;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ff4e91;
+  box-shadow: 0 0 0 3px rgba(255,78,145,.10);
+}
+
+textarea {
+  min-height: 135px;
+  resize: none;
+}
+
+.rules {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 17px;
+  color: #9999a8;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.rules input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+button {
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 17px;
+  margin-top: 15px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 950;
+  letter-spacing: .3px;
+  background: linear-gradient(135deg, #ff397e, #974cff);
+  box-shadow: 0 14px 32px rgba(255,57,126,.18);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.985);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+}
+
+.small {
+  text-align: center;
+  color: #6f6f7c;
+  font-size: 11px;
+  margin-top: 17px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ANALYSIS */
+
+.analysis {
+  text-align: center;
+  padding: 35px 5px;
+}
+
+.analysis-icon {
+  font-size: 55px;
+  margin-bottom: 20px;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.analysis-text {
+  font-size: 18px;
+  font-weight: 850;
+  color: #eeeef4;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* QUIZ */
+
+.timer {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 950;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.timer.warning {
+  color: #ff4e82;
+  animation: timerPulse .7s infinite alternate;
+}
+
+@keyframes timerPulse {
+  from { opacity: 1; }
+  to { opacity: .45; }
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #9999a8;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.progress {
+  width: 100%;
+  height: 7px;
+  border-radius: 99px;
+  background: #252531;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff397e, #974cff);
+  transition: width .3s ease;
+}
+
+.question-number {
+  color: #ff619d;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+  margin-bottom: 9px;
+}
+
+.question {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.next-button {
+  margin-top: 15px;
+}
+
+/* SUBMISSION */
+
+.result-icon {
+  text-align: center;
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+
+.result-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 950;
+  margin-bottom: 12px;
+}
+
+.result-text {
+  text-align: center;
+  color: #a5a5b3;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #666673;
+  font-size: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<!-- ================= INTRO ================= -->
+
+<section id="intro">
+
+  <div class="logo">
+    ❤️ THREE YEARS • ONE QUIZ
+  </div>
+
+  <h1>
+    LET THE THREE YEARS MAKE SENSE ❤️
+  </h1>
+
+  <p class="subtitle">
+    15 questions. 6 minutes.<br>
+    Let's see how well you really know your person. 🥹❤️
+  </p>
+
+  <label for="email">
+    Enter your email
+  </label>
+
+  <input
+    id="email"
+    type="email"
+    placeholder="Your email address"
+    autocomplete="email"
+  >
+
+  <div class="rules">
+
+    <input
+      type="checkbox"
+      id="agree"
+    >
+
+    <span>
+      I understand that once I start the quiz,
+      I cannot go back, restart, or change previous answers.
+    </span>
+
+  </div>
+
+  <button onclick="startQuiz()">
+    START THE QUIZ ❤️
+  </button>
+
+  <div class="small">
+    15 questions • 6 minutes • No going back
+  </div>
+
+</section>
+
+
+<!-- ================= LOADING ================= -->
+
+<section id="analysis" class="hidden">
+
+  <div class="analysis">
+
+    <div class="analysis-icon">
+      ❤️
+    </div>
+
+    <div
+      id="analysisText"
+      class="analysis-text"
+    >
+      Preparing your quiz...
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= QUIZ ================= -->
+
+<section id="quiz" class="hidden">
+
+  <div
+    id="timer"
+    class="timer"
+  >
+    06:00
+  </div>
+
+  <div class="progress-top">
+
+    <span id="progressText">
+      Question 1 of 15
+    </span>
+
+    <span>
+      ❤️
+    </span>
+
+  </div>
+
+  <div class="progress">
+
+    <div
+      id="progressFill"
+      class="progress-fill"
+    ></div>
+
+  </div>
+
+  <div
+    id="questionNumber"
+    class="question-number"
+  >
+    QUESTION 01
+  </div>
+
+  <div
+    id="questionText"
+    class="question"
+  ></div>
+
+  <textarea
+    id="answer"
+    placeholder="Type your answer here..."
+    autocomplete="off"
+    spellcheck="true"
+  ></textarea>
+
+  <button
+    id="nextButton"
+    class="next-button"
+    onclick="nextQuestion()"
+  >
+    NEXT →
+  </button>
+
+</section>
+
+
+<!-- ================= FINAL SUBMIT ================= -->
+
+<section
+  id="submitScreen"
+  class="hidden"
+>
+
+  <div class="result-icon">
+    💌
+  </div>
+
+  <div class="result-title">
+    YOU MADE IT ❤️
+  </div>
+
+  <p class="result-text">
+    You've answered all 15 questions.
+    Your answers are ready to be submitted.
+  </p>
+
+  <button
+    id="submitButton"
+    onclick="submitQuiz()"
+  >
+    SUBMIT MY ANSWERS 💌
+  </button>
+
+</section>
+
+
+<!-- ================= SUCCESS ================= -->
+
+<section
+  id="success"
+  class="hidden"
+>
+
+  <div class="result-icon">
+    ❤️
+  </div>
+
+  <div class="result-title">
+    ANSWERS SUBMITTED
+  </div>
+
+  <p class="result-text">
+    Your answers have been submitted successfully.
+    Thank you for taking the quiz. ❤️
+  </p>
+
+</section>
+
+
+<!-- ================= LOCKED ================= -->
+
+<section
+  id="locked"
+  class="hidden"
+>
+
+  <div class="result-icon">
+    🔒
+  </div>
+
+  <div class="result-title">
+    QUIZ LOCKED
+  </div>
+
+  <p class="result-text">
+    This quiz attempt has already been started or completed.
+    You cannot restart the quiz or submit another attempt.
+  </p>
+
+</section>
+
+
+<div class="footer">
+  Made with ❤️
+</div>
+
+</div>
+</div>
+
+
+<script>
+
+/* =========================================================
+   QUESTIONS
+   ORIGINAL 11 QUESTIONS KEPT UNCHANGED
+   + 4 NEW RELATIONSHIP QUESTIONS
+========================================================= */
+
+const questions = [
+
+  "👤 What are my three names?",
+
+  "🎂 How old am I now?",
+
+  "👨‍👩‍👦 How many siblings do I have?",
+
+  "🌍 Which country am I currently living in?",
+
+  "🎯 Name ONE thing I really want to achieve in life.",
+
+  "🏠 Who did I live with when I was in Kenya?",
+
+  "🎂❤️ When is my birthday?",
+
+  "💼 What job am I currently doing?",
+
+  "😤 What is one thing that can instantly annoy me?",
+
+  "🧠💔 When I am going through a difficult situation or feeling stressed, what do I usually do?",
+
+  "🪞❤️ What is something I am insecure about?",
+
+  /* NEW QUESTIONS */
+
+  "❤️ What is something that always makes me happy, even when I am having a bad day?",
+
+  "🍽️ What is one of my favourite foods or meals?",
+
+  "💭 What is one of my biggest dreams for our future together?",
+
+  "🤝 When we have a disagreement, what do I usually need from you?"
+];
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+const TOTAL_TIME = 6 * 60;
+
+const FORM_ENDPOINT =
+  "https://formspree.io/f/myezyerr";
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+let answers = [];
+let userEmail = "";
+let timeLeft = TOTAL_TIME;
+let timerInterval = null;
+let quizStarted = false;
+let submitting = false;
+
+
+/* =========================================================
+   STORAGE KEYS
+========================================================= */
+
+const ATTEMPT_KEY =
+  "three_years_quiz_attempt_v2";
+
+const ANSWERS_KEY =
+  "three_years_quiz_answers_v2";
+
+const EMAIL_KEY =
+  "three_years_quiz_email_v2";
+
+
+/* =========================================================
+   CHECK WHETHER THIS DEVICE ALREADY STARTED THE QUIZ
+========================================================= */
+
+function isLocked() {
+
+  return localStorage.getItem(ATTEMPT_KEY) === "locked";
+
+}
+
+
+/* =========================================================
+   LOCK QUIZ PERMANENTLY ON THIS DEVICE
+========================================================= */
+
+function lockQuiz() {
+
+  localStorage.setItem(
+    ATTEMPT_KEY,
+    "locked"
+  );
+
+}
+
+
+/* =========================================================
+   SHOW ONLY ONE SECTION
+========================================================= */
+
+function showOnly(id) {
+
+  const sections = [
+    "intro",
+    "analysis",
+    "quiz",
+    "submitScreen",
+    "success",
+    "locked"
+  ];
+
+  sections.forEach(section => {
+
+    document
+      .getElementById(section)
+      .classList.add("hidden");
+
+  });
+
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================================================
+   START QUIZ
+========================================================= */
+
+function startQuiz() {
+
+  if (isLocked()) {
+
+    showOnly("locked");
+    return;
+
+  }
+
+
+  const emailInput =
+    document.getElementById("email");
+
+  const agree =
+    document.getElementById("agree");
+
+
+  userEmail =
+    emailInput.value.trim();
+
+
+  if (!userEmail) {
+
+    alert("Please enter your email.");
+    emailInput.focus();
+    return;
+
+  }
+
+
+  if (!emailInput.checkValidity()) {
+
+    alert("Please enter a valid email address.");
+    emailInput.focus();
+    return;
+
+  }
+
+
+  if (!agree.checked) {
+
+    alert(
+      "Please confirm that you understand the quiz rules."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    LOCK THE ATTEMPT IMMEDIATELY.
+    This prevents simply returning to the beginning
+    of the quiz on the same browser.
+  */
+
+  lockQuiz();
+
+
+  localStorage.setItem(
+    EMAIL_KEY,
+    userEmail
+  );
+
+
+  quizStarted = true;
+
+  currentQuestion = 0;
+
+  answers = [];
+
+  timeLeft = TOTAL_TIME;
+
+
+  showOnly("analysis");
+
+
+  const messages = [
+
+    "❤️ Preparing your relationship quiz...",
+
+    "🧠 Loading three years of memories...",
+
+    "💭 Getting the questions ready...",
+
+    "⏱️ Six minutes. Make them count..."
+
+  ];
+
+
+  let messageIndex = 0;
+
+
+  document.getElementById(
+    "analysisText"
+  ).textContent = messages[0];
+
+
+  const animation =
+    setInterval(() => {
+
+      messageIndex++;
+
+
+      if (
+        messageIndex <
+        messages.length
+      ) {
+
+        document.getElementById(
+          "analysisText"
+        ).textContent =
+          messages[messageIndex];
+
+      } else {
+
+        clearInterval(animation);
+
+        showOnly("quiz");
+
+        renderQuestion();
+
+        startTimer();
+
+      }
+
+    }, 800);
+
+}
+
+
+/* =========================================================
+   DISPLAY CURRENT QUESTION
+========================================================= */
+
+function renderQuestion() {
+
+  document.getElementById(
+    "questionNumber"
+  ).textContent =
+    "QUESTION " +
+    String(currentQuestion + 1)
+      .padStart(2, "0");
+
+
+  document.getElementById(
+    "questionText"
+  ).textContent =
+    questions[currentQuestion];
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    "Question " +
+    (currentQuestion + 1) +
+    " of " +
+    questions.length;
+
+
+  const progress =
+    (currentQuestion /
+      questions.length) * 100;
+
+
+  document.getElementById(
+    "progressFill"
+  ).style.width =
+    progress + "%";
+
+
+  document.getElementById(
+    "answer"
+  ).value = "";
+
+
+  if (
+    currentQuestion ===
+    questions.length - 1
+  ) {
+
+    document.getElementById(
+      "nextButton"
+    ).textContent =
+      "FINISH →";
+
+  } else {
+
+    document.getElementById(
+      "nextButton"
+    ).textContent =
+      "NEXT →";
+
+  }
+
+
+  setTimeout(() => {
+
+    document
+      .getElementById("answer")
+      .focus();
+
+  }, 100);
+
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion() {
+
+  const answer =
+    document
+      .getElementById("answer")
+      .value
+      .trim();
+
+
+  if (!answer) {
+
+    alert(
+      "Please answer the question before continuing."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    SAVE THE ANSWER.
+
+    There is deliberately NO BACK BUTTON.
+    Once Next is pressed, the previous question
+    cannot be edited.
+  */
+
+  answers[currentQuestion] =
+    answer;
+
+
+  localStorage.setItem(
+    ANSWERS_KEY,
+    JSON.stringify(answers)
+  );
+
+
+  if (
+    currentQuestion <
+    questions.length - 1
+  ) {
+
+    currentQuestion++;
+
+    renderQuestion();
+
+  } else {
+
+    clearInterval(timerInterval);
+
+    document.getElementById(
+      "progressFill"
+    ).style.width = "100%";
+
+    showOnly("submitScreen");
+
+  }
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function startTimer() {
+
+  clearInterval(timerInterval);
+
+  updateTimer();
+
+
+  timerInterval =
+    setInterval(() => {
+
+      timeLeft--;
+
+      updateTimer();
+
+
+      if (timeLeft <= 0) {
+
+        clearInterval(timerInterval);
+
+        timeExpired();
+
+      }
+
+    }, 1000);
+
+}
+
+
+/* =========================================================
+   UPDATE TIMER DISPLAY
+========================================================= */
+
+function updateTimer() {
+
+  const minutes =
+    Math.floor(timeLeft / 60);
+
+  const seconds =
+    timeLeft % 60;
+
+
+  document.getElementById(
+    "timer"
+  ).textContent =
+    String(minutes)
+      .padStart(2, "0") +
+    ":" +
+    String(seconds)
+      .padStart(2, "0");
+
+
+  if (timeLeft <= 60) {
+
+    document
+      .getElementById("timer")
+      .classList.add("warning");
+
+  }
+
+}
+
+
+/* =========================================================
+   TIME EXPIRED
+========================================================= */
+
+function timeExpired() {
+
+  const currentAnswer =
+    document
+      .getElementById("answer")
+      .value
+      .trim();
+
+
+  if (
+    currentQuestion <
+    questions.length
+  ) {
+
+    answers[currentQuestion] =
+      currentAnswer ||
+      "No answer provided";
+
+  }
+
+
+  /*
+    Make sure all 15 questions exist
+    in the submitted data.
+  */
+
+  for (
+    let i = 0;
+    i < questions.length;
+    i++
+  ) {
+
+    if (!answers[i]) {
+
+      answers[i] =
+        "No answer provided";
+
+    }
+
+  }
+
+
+  localStorage.setItem(
+    ANSWERS_KEY,
+    JSON.stringify(answers)
+  );
+
+
+  showOnly("submitScreen");
+
+
+  document.querySelector(
+    "#submitScreen .result-text"
+  ).textContent =
+    "Time is up. Your answers are ready to be submitted. ❤️";
+
+}
+
+
+/* =========================================================
+   SUBMIT TO FORMSPREE
+========================================================= */
+
+async function submitQuiz() {
+
+  if (submitting) {
+    return;
+  }
+
+
+  submitting = true;
+
+
+  const button =
+    document.getElementById(
+      "submitButton"
+    );
+
+
+  button.disabled = true;
+
+  button.textContent =
+    "SUBMITTING...";
+
+
+  try {
+
+    /*
+      Create a form containing
+      the email + all 15 questions/answers.
+    */
+
+    const formData =
+      new FormData();
+
+
+    formData.append(
+      "_subject",
+      "❤️ Three Years Relationship Quiz"
+    );
+
+
+    formData.append(
+      "quiz_taker_email",
+      userEmail
+    );
+
+
+    formData.append(
+      "quiz",
+      "Three Years Relationship Quiz"
+    );
+
+
+    questions.forEach(
+      (question, index) => {
+
+        formData.append(
+          "Question " +
+          (index + 1),
+          question
+        );
+
+
+        formData.append(
+          "Answer " +
+          (index + 1),
+          answers[index] ||
+          "No answer provided"
+        );
+
+      }
+    );
+
+
+    /*
+      SEND EVERYTHING TO FORMSPREE.
+    */
+
+    const response =
+      await fetch(
+        FORM_ENDPOINT,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept":
+              "application/json"
+          }
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Formspree submission failed."
+      );
+
+    }
+
+
+    /*
+      Clear temporary answer data.
+      Keep the attempt lock.
+    */
+
+    localStorage.removeItem(
+      ANSWERS_KEY
+    );
+
+
+    clearInterval(
+      timerInterval
+    );
+
+
+    showOnly("success");
+
+
+  } catch (error) {
+
+    console.error(error);
+
+
+    alert(
+      "The answers could not be submitted. Please check your internet connection and try again."
+    );
+
+
+    button.disabled = false;
+
+    button.textContent =
+      "SUBMIT MY ANSWERS 💌";
+
+    submitting = false;
+
+  }
+
+}
+
+
+/* =========================================================
+   PREVENT BROWSER BACK BUTTON
+========================================================= */
+
+history.pushState(
+  null,
+  "",
+  location.href
+);
+
+
+window.addEventListener(
+  "popstate",
+  function() {
+
+    history.pushState(
+      null,
+      "",
+      location.href
+    );
+
+
+    if (quizStarted) {
+
+      alert(
+        "Going back is disabled during the quiz. ❤️"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   WARN BEFORE REFRESH / CLOSING
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  function(event) {
+
+    if (
+      quizStarted &&
+      !submitting
+    ) {
+
+      event.preventDefault();
+
+      event.returnValue = "";
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIAL PAGE LOAD
+========================================================= */
+
+window.addEventListener(
+  "load",
+  function() {
+
+    if (isLocked()) {
+
+      showOnly("locked");
+
+    } else {
+
+      showOnly("intro");
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
